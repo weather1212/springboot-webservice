@@ -1,5 +1,6 @@
 package com.hoseong.springboot.domain.posts;
 
+import com.hoseong.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Getter // 클래스 내 모든 필드의 getter 메소드 생성
 @NoArgsConstructor  // 기본 생성장 자동 추가(= public Posts() {})
 @Entity // 테이블과 링크될 클래스임을 나타냄
-public class Posts {
+public class Posts extends BaseTimeEntity { // JPA Entity 클래스들이 BaseTimeEntity 를 상속할 경우 필드들(createDate, modifiedDate)도 칼럼으로 인식하도록 함
 
     @Id // 해당 테이블의 PK필드
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -67,7 +67,8 @@ public class PostsApiControllerTest {
 
     @Test
     public void Posts_수정된다() throws Exception {
-        //given
+
+        // given
         Posts savePosts = postsRepository.save(Posts.builder()
                 .title("title")
                 .content("content")
@@ -86,10 +87,10 @@ public class PostsApiControllerTest {
 
         HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
 
-        //when
+        // when
         ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
 
-        //then
+        // then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
 
